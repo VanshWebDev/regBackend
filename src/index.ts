@@ -4,7 +4,6 @@ import serverless from "serverless-http";
 import { addUserToSheet } from "./googleSheet";
 
 const app = express();
-const port = 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -27,6 +26,5 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
-});
+// ⭐ THIS IS REQUIRED FOR VERCEL
+export const handler = serverless(app);
