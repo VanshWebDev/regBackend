@@ -5,8 +5,16 @@ import { addUserToSheet } from "../src/googleSheet";
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: "https://glittery-sunflower-090fb9.netlify.app",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("API running");
