@@ -1,4 +1,6 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
   "functions": {
     "api/index.ts": {
       "runtime": "@vercel/node@5.0.0"
