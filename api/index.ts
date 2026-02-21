@@ -1,5 +1,5 @@
 import express from "express";
-import { addUserToSheet } from "../services/googleSheet";
+import { addUserToSheet } from "../src/services/googleSheet";
 import bodyParser from "body-parser";
 import cors from "cors";
 
