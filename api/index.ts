@@ -1,12 +1,12 @@
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import express from "express";
 import cors from "cors";
-import serverless from "serverless-http";
-import { addUserToSheet } from "../src/googleSheet.js";
+import { addUserToSheet } from "../src/googleSheet";
 
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("API running");
@@ -26,4 +26,7 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-export default serverless(app);
+// ⭐ Vercel handler
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  return app(req as any, res as any);
+}
