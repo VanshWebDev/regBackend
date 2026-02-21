@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import serverless from "serverless-http";
-import { addUserToSheet } from "../src/services/googleSheet";
+import { addUserToSheet } from "./googleSheet";
 
 const app = express();
+const port = 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -26,5 +27,6 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-export const handler = serverless(app);
-export default handler;
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
+});
